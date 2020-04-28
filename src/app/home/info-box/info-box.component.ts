@@ -1,13 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  Output,
-  SimpleChange
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChange } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MessageService } from '../message.service';
 
@@ -35,13 +26,13 @@ export class InfoBoxComponent implements OnInit, OnChanges, OnDestroy {
   @Output()
   replyToParent = new EventEmitter<string>();
 
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService) { }
 
   ngOnInit() {
     this.messageService.listener$.subscribe(msg => (this.message = msg));
   }
 
-  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
+  ngOnChanges(changes: Record<string, SimpleChange>) {
     if (changes.message) {
       console.log('changes.message', changes.message.currentValue);
     }

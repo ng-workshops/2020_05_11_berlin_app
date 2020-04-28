@@ -1,3 +1,10 @@
+import {
+  animate,
+  keyframes,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from '../customer.model';
@@ -5,7 +12,22 @@ import { Customer } from '../customer.model';
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.scss']
+  styleUrls: ['./customer.component.scss'],
+  animations: [
+    trigger('toggle', [
+      transition(':enter', [
+        animate(
+          '2s',
+          keyframes([
+            style({ backgroundColor: 'blue', offset: 0 }),
+            style({ backgroundColor: 'red', offset: 0.8 }),
+            style({ backgroundColor: 'orange', offset: 1.0 }),
+          ])
+        ),
+      ]),
+      transition(':leave', [animate('1s', style({ opacity: 0 }))]),
+    ]),
+  ],
 })
 export class CustomerComponent implements OnInit {
   @Input() customer: Customer;

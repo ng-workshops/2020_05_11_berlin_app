@@ -1,10 +1,10 @@
-# 14 Dynamic Modal
+# 10 Dynamic Modal
 
 > ng generate component shared/modal --module shared
 
-> create src/app/shared/modal/modal.model.ts
+> create file src/app/shared/modal/modal.model.ts
 
-## shared/modal/modal.model.ts
+## src/app/shared/modal/modal.model.ts
 
 ```ts
 type ModalTypes = 'basic' | 'warn' | 'primary';
@@ -16,7 +16,7 @@ export interface ModalData {
 }
 ```
 
-## shared/modal/modal.component.html
+## src/app/shared/modal/modal.component.html
 
 ```html
 <div class="closable backdrop" (click)="close.emit()"></div>
@@ -27,24 +27,24 @@ export interface ModalData {
     <mat-card-content>{{ modal.message }}</mat-card-content>
     <mat-card-content class="footer">
       <button (click)="cancel.emit()" mat-raised-button color="basic">
-        Ähm No
+        no
       </button>
       <button (click)="close.emit()" mat-raised-button [color]="modal.type">
-        Oki doki
+        yes
       </button>
     </mat-card-content>
   </mat-card>
 </div>
 ```
 
-## shared/modal/modal.component.ts
+## src/app/shared/modal/modal.component.ts
 
 ```ts
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalData } from './modal.model';
 
 @Component({
-  selector: 'app-modal',
+  selector: 'modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
@@ -66,7 +66,7 @@ export class ModalComponent implements OnInit {
 
 > ng generate service shared/modal/modal
 
-## shared/modal/modal.service.ts
+## src/app/shared/modal/modal.service.ts
 
 ```ts
 import {
@@ -104,18 +104,30 @@ export class ModalService {
 }
 ```
 
-## shared/module.ts
+## src/app/shared/module.ts
 
 Add MatCardModule, MatButtonModule to imports
-Add ModalComponent in entry components
 
-## home/home.component.html
+```ts
+imports: [
+    CommonModule,
+    MatInputModule,
+    FormsModule,
+    MatCardModule,
+    MatButtonModule
+  ],
+```
+
+Add ModalComponent in entry components
+`entryComponents: [ModalComponent]`
+
+## src/app/home/home.component.html
 
 ```html
 <button (click)="openModal()">Open modal</button>
 ```
 
-## home/home.component.ts
+## src/app/home/home.component.ts
 
 ```ts
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
@@ -133,7 +145,7 @@ export class HomeComponent {
   name = 'START_';
   reply = '';
 
-  @ViewChild('child')
+  @ViewChild('child', { static: false })
   private child: InfoBoxComponent;
 
   constructor(

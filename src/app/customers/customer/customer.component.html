@@ -5,11 +5,11 @@
       }}{{ customer?.firstname ? ', ' + customer?.firstname : '' }}
     </h4>
   </a>
-  <span
-    ><mat-icon>{{
+  <span>
+    <mat-icon>{{
       customer?.numberOfOrders | appCustomerStatus
-    }}</mat-icon></span
-  >
+    }}</mat-icon>
+  </span>
 </div>
 <div class="content">
   <span> My hobbies: "{{ customer?.hobbies }}" </span>
@@ -19,7 +19,7 @@
     }}</mat-icon>
   </button>
 </div>
-<div class="details" *ngIf="showDetails">
+<div @toggle class="details" *ngIf="showDetails">
   <ng-content></ng-content>
 </div>
 <div class="footer">
