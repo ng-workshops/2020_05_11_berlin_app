@@ -20,7 +20,7 @@ export class HomeComponent {
   name = 'START_';
   reply = '';
 
-  @ViewChild('child', { static: false })
+  @ViewChild('child')
   private child: InfoBoxComponent;
 
   constructor(

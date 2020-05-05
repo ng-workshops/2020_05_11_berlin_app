@@ -34,14 +34,8 @@
   </div>
 
   <ul>
-    <li
-      transloco="impressum.developers"
-      [translocoParams]="{ gender: 'female', name: 'Sarah' }"
-    ></li>
-    <li
-      transloco="impressum.developers"
-      [translocoParams]="{ gender: 'male', name: 'Peter' }"
-    ></li>
+    <li transloco="impressum.developers" [translocoParams]="{ gender: 'female', name: 'Sarah' }"></li>
+    <li transloco="impressum.developers" [translocoParams]="{ gender: 'male', name: 'Peter' }"></li>
     <li>
       {{
         'impressum.developers' | transloco: { gender: 'male', name: 'Peter' }

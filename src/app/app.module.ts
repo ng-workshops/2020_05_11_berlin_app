@@ -6,9 +6,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslocoModule, TRANSLOCO_CONFIG } from '@ngneat/transloco';
 import { TranslocoMessageFormatModule } from '@ngneat/transloco-messageformat';
-import { TranslateCompiler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {
+  TranslateCompiler,
+  TranslateLoader,
+  TranslateModule,
+} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 // import ngx-translate-messageformat-compiler
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
+import { environment } from '../environments/environment';
 // Routing Module
 import { AppRoutingModule } from './app-routing.module';
 // App Root
@@ -42,29 +48,33 @@ registerLocaleData(localeDe, 'de');
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
+        deps: [HttpClient],
       },
       // compiler configuration
       compiler: {
         provide: TranslateCompiler,
-        useClass: TranslateMessageFormatCompiler
-      }
-    }
+        useClass: TranslateMessageFormatCompiler,
+      },
+    }),
   ],
   declarations: [AppComponent],
-  providers: [httpInterceptorProviders, translocoLoader,
+  providers: [
+    httpInterceptorProviders,
+    translocoLoader,
     {
       provide: TRANSLOCO_CONFIG,
       useValue: {
         availableLangs: ['en', 'de'],
         reRenderOnLangChange: true, // should be enabled when the user can change the language at runtime
         prodMode: environment.production,
-        defaultLang: 'en'
-      }
-    }, { provide: LOCALE_ID, useValue: 'de' }],
-  bootstrap: [AppComponent]
+        defaultLang: 'en',
+      },
+    },
+    { provide: LOCALE_ID, useValue: 'de' },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 
 // required for AOT compilation
 export function HttpLoaderFactory(http: HttpClient) {

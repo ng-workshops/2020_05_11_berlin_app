@@ -1,10 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CustomerListComponent } from './customer-list.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { CustomerService } from '../customer.service';
 import { of } from 'rxjs';
+import { CustomerService } from '../customer.service';
+import { CustomerListComponent } from './customer-list.component';
 
 describe('CustomerListComponent', () => {
   let component: CustomerListComponent;
@@ -20,12 +19,12 @@ describe('CustomerListComponent', () => {
       declarations: [CustomerListComponent],
       providers: [
         { provide: Router, useValue: {} },
-        { provide: CustomerService, useValue: spy }
+        { provide: CustomerService, useValue: spy },
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
-    customerServiceSpy = TestBed.get(CustomerService);
+    customerServiceSpy = TestBed.inject(CustomerService);
   }));
 
   beforeEach(() => {

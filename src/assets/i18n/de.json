@@ -1,17 +1,16 @@
 {
+  "general.copyright": "Copyright ACME Ltd",
+  "general.lastupdatedAt": "Zuletzt gändert am ",
   "impressum": {
-    "career": "Karriere",
-    "content": "Hier finden Sie ein paar rechtliche Informationen und andere interessante Dinge",
-    "greeting": "Hallo {{name}}",
-    "home": "Home",
-    "days": "{days, plural, =0 {heute} =1 {gestern} other {# Tage her}}",
-    "info": "Willkommen zu meiner Angular Applikation!<br><strong>Es ist eine tolle App, welche die neuesten Technologien verwendet!</strong><br><br>",
-    "sitemap": "Sitemap",
-    "title": "Impressum",
-    "developers": "{gender, select, male{Mit Liebe erstellt von Herrn } female{Mit Liebe erstellt von Frau } other{Unsere Entwickler }} {name}"
+    "title": "Impressum"
   },
-  "general": {
-    "lastupdatedAt": "Zuletzt gändert am ",
-    "copyright": "Copyright ACME Ltd"
-  }
+  "impressum.career": "Karriere",
+  "impressum.content": "Hier finden Sie ein paar rechtliche Informationen und andere interessante Dinge",
+  "impressum.days": "{days, plural, =0 {heute} =1 {gestern} other {# Tage her}}",
+  "impressum.developers": "{gender, select, male{Mit Liebe erstellt von Herrn } female{Mit Liebe erstellt von Frau } other{Unsere Entwickler }} {name}",
+  "impressum.greeting": "Hallo {{name}}",
+  "impressum.home": "Home",
+  "impressum.info": "Willkommen zu meiner Angular Applikation!<br><strong>Es ist eine tolle App, welche die neuesten Technologien verwendet!</strong><br><br>",
+  "impressum.sitemap": "Sitemap",
+  "impressum.title": "Impressum"
 }
