@@ -1,3 +1,5 @@
+# Animations - toggle
+
 ## src/app/customers/customer/customer.component.ts
 
 ```ts
